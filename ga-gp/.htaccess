@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+	RewriteEngine On
+
+	RewriteCond %{REQUEST_URI} !^/ga-gp/.*$
+	#RewriteRule ^(.*)$ /ga-gp/$1 [QSA,L]
+	
+	RewriteRule ^(.*)$ /ga-gp/$1 [L]
+	RewriteRule ^cat/([0-9]+)/([0-9]+)?$ /ga-gp/index.php?page=cat&categorie=$1&souscat=$2 [L]
+	RewriteRule ^cat/([0-9]+)?$ /ga-gp/index.php?page=cat&categorie=$1 [L]
+	RewriteRule ^produit/([^/]*)/([0-9]+)?$ /ga-gp/detail.php?label=$1&id=$2 [L]
+	RewriteRule ^ajout/l/([^/]*)/q/([0-9]+)/p/([0-9]+)?$ /ga-gp/panier.php?action=ajout&l=$1&q=$2&p=$3 [L]
+	RewriteRule ^Accueil/?$ /index\.php [L]
+</IfModule>
+
